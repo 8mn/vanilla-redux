@@ -1,4 +1,4 @@
-const redux = require('redux')
+
 const reduxLogger = require('redux-logger')
 
 const BUY_CAKE = 'BUY_CAKE'
