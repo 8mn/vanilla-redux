@@ -1,8 +1,14 @@
 const redux = require('redux')
+const reduxLogger = require('redux-logger')
 
 const BUY_CAKE = 'BUY_CAKE'
 const BUY_ICECREAM = 'BUY_ICECREAM'
 // const createStore = redux.createStore()
+const applyMiddleware = redux.applyMiddleware
+
+//using a middleware in redux
+const logger = reduxLogger.createLogger()
+
 
 //initial state
 
@@ -72,9 +78,9 @@ const rootReducer =  redux.combineReducers({
     iceCream:IceCreamReducer
 })
 
-const store = redux.createStore(rootReducer)
+const store = redux.createStore(rootReducer,applyMiddleware(logger))
 console.log('Initial state', store.getState())
-const unsubscribe =  store.subscribe(() => console.log("Updated state", store.getState()))
+const unsubscribe =  store.subscribe(() => {})
 store.dispatch(buyCake())
 store.dispatch(buyCake())
 store.dispatch(buyCake())
